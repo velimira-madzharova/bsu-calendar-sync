@@ -1,0 +1,16 @@
+graphic:
+  centre:
+    - 3
+  educational_form:
+    - 1
+    - 2
+  course_year:
+    - 1
+    - 2
+    - 3
+    - 4
+courses:
+  all:
+    - Основи на конструирането и AutoCAD
+    - Английски език
+    - Висша математика ІІІ
