@@ -11,22 +11,22 @@ class Storage:
         self.actions = []
         self.calendar = Calendar()
 
-    def save(self, courses, week):
+    def save(self, courses):
 
-        saved_graphics = self.__get_graphics(week)
+        saved_graphics = self.__get_graphics()
 
         for saved_graphic in saved_graphics:
             found = False
             for course_graphic in reversed(courses):
                 if saved_graphic['start_date'] == course_graphic['start_date'] and \
                    saved_graphic['end_date'] == course_graphic['end_date'] and \
-                   saved_graphic['educational_form'] == course_graphic['educational_form'] and \
-                   saved_graphic['course_year'] == course_graphic['course_year']:
+                   saved_graphic['course_name'] == course_graphic['course_name']:
                     self.__update(saved_graphic, course_graphic)
                     courses.remove(course_graphic)
                     found = True
                     break
 
+            # course has been deleted from online schedule. Therefore we delete it as well.
             if not found:
                self.__delete(saved_graphic)
 
@@ -44,11 +44,8 @@ class Storage:
           'data': data
         })
 
-    def __get_graphics(self, week):
-        mongo_graphics = self.db.graphic.find({
-        'start_date': {'$gte': week['week_from'], '$lt': week['week_to']},
-        'educational_form': week['educational_form'],
-        'course_year': week['course_year']})
+    def __get_graphics(self):
+        mongo_graphics = self.db.graphic.find({})
 
         return mongo_graphics
 
