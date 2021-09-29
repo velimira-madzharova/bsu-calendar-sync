@@ -53,7 +53,8 @@ python main.py
 ```
 
 ### Authenticate application
-Once the app asks you to open a link, copy the link, paste in browser and authenticate the google account you have listed as test user in the Developer console
+Once the app asks you to open a link, copy the link, paste in browser and authenticate the google account you have listed as test user in the Developer console.
+After you give access to the app in Google -> copy the link from the browser (it will start http://localhost:8000 as the configuration you did in the Google developer console) and paste the link another terminal window (different from the onw you started the process with)
 > :heavy_check_mark: *The authentication will be saved only on your local machine. Also, you can revoke the access later from your profile settings.
 
 ## Expected Result
